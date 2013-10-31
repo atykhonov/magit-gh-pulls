@@ -102,11 +102,10 @@
             (magit-set-section-info (list user proj id))
             (insert header)
             (when (and have-commits (not applied))
-              (apply #'magit-git-section
-                     'request nil 'magit-wash-log "log"
-                     (append magit-git-log-options
-                             (list
-                              (format "%s..%s" base-sha head-sha))))))))))
+              (magit-git-section 'request nil
+                                 'magit-wash-log
+                                 "log" "--format=format:* %h %s"
+                                 (format "%s..%s" base-sha head-sha))))))))
   (insert "\n"))
 
 (defun magit-gh-pulls-guess-topic-name (req)
