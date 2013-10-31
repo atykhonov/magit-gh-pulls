@@ -59,7 +59,7 @@
          (split (split-string cfg "/")))
     (cons (car split) (cadr split))))
 
-(magit-define-inserter gh-pulls ()
+(defun magit-insert-gh-pulls ()
   (magit-with-section "Pull Requests" 'pulls
     (insert (propertize "Pull Requests:" 'face 'magit-section-title) "\n")
     (let* ((api (magit-gh-pulls-get-api))
